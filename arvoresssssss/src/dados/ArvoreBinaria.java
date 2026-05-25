@@ -1,7 +1,9 @@
+package dados;
+
 public class ArvoreBinaria {
     private No<T> raiz;
     
-    public ArovreBinaria(){
+    public ArvoreBinaria(){
         this.raiz = null;
     }
 
@@ -9,12 +11,12 @@ public class ArvoreBinaria {
         No<T> novo = No(valor); 
         if(raiz == null){
             raiz = novo;
-        }else{
-            if(novo <= raiz){
-                raiz.setEsquerda(novo);
-                raiz.esquerda.setPaiDele(raiz);
+        }else{ //tinha >= / <= antes mas a aplicacao padrao dessa teoria sao identificadores unicos HASHES
+            if(novo.valor < raiz.valor){
+                raiz.esquerda = novo;
+                raiz.esquerda.paiDele = novo;
             }
-            if(novo >= raiz){
+            if(novo.valor > raiz.valor){
                 raiz.setDireita(novo);
                 raiz.esquerda.setPaiDele(raiz);
             }
@@ -22,22 +24,22 @@ public class ArvoreBinaria {
     }
 
 
-    public class No<T>{
-        private T dado;
-        private No esquerda;
-        private No direita;
-        private No paiDele;
+    class No<T>{
+        T dado;
+        No<T> esquerda;
+        No<T> direita;
+        No<T> paiDele;
 
         public No<T>(T valor){
-            dado = valor;
-            private No esquerda = null;
-            private No diereita = null;
-            private No paiDele = null;
+            T dado = valor;
+            No esquerda = null;
+            No diereita = null;
+            No paiDele = null;
         }
 
 
     public No<T> getEsquerda() {
-        return this.raiz;
+        return this.esquerda;
     }
 
     public void setEsquerda (No<T> esquerda) {
@@ -59,7 +61,6 @@ public class ArvoreBinaria {
     public void setpaiDele(No<T> paiDele) {
         this.paiDele = paiDele;
     }
-
 
     }
 }

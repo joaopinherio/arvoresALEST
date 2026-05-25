@@ -1,14 +1,14 @@
+package app;
 import dados.*;
 
 public class App {
     ArvoreBinaria arvoreBin;
     
     public App(){
-        arvoreBin = new ArovreBinaria();
+        arvoreBin = new ArvoreBinaria();
     }
 
     public void executar(){
-        arvoreBin.AdcionaRaiz();
-        //System.out.println();
+        arvoreBin.AdcionaRaiz(1);
     }
 }
